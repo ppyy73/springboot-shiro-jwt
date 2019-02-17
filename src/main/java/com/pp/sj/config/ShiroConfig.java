@@ -83,6 +83,10 @@ public class ShiroConfig {
   private Map<String, String> definitionMap() {
     Map<String, String> definitionMap = new HashMap<>();
     definitionMap.put("/login", "anon");
+    definitionMap.put("/swagger-ui.html","anon");
+    definitionMap.put("/swagger-resources/**","anon");
+    definitionMap.put("/v2/api-docs", "anon");
+    definitionMap.put("/webjars/springfox-swagger-ui/**", "anon");
     definitionMap.put("/**", JWT_FILTER_NAME);
     return definitionMap;
   }

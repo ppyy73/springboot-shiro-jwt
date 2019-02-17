@@ -3,8 +3,8 @@ package com.pp.sj.controller;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pp.sj.config.Constant;
@@ -12,6 +12,9 @@ import com.pp.sj.config.Result;
 import com.pp.sj.entry.User;
 import com.pp.sj.service.UserService;
 import com.pp.sj.utils.JwtUtils;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * 
@@ -21,12 +24,14 @@ import com.pp.sj.utils.JwtUtils;
  *
  */
 @RestController
+@Api(value = "login", tags = "login Controller")
 public class LoginController {
 
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/login")
+	@PostMapping("/login")
+	@ApiOperation("login demo")
 	public Result login(@RequestBody User user) {
 
 		String username = user.getUsername();

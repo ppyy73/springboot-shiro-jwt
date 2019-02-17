@@ -2,9 +2,16 @@ package com.pp.sj.controller;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * 
@@ -16,28 +23,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 @RequiresRoles("admin")
+@Api(value = "admin", tags = "admin Controller")
 public class AdminController {
 
-	@RequestMapping("/add")
+	@PostMapping("/add")
 	@RequiresPermissions("add")
+	@ApiModelProperty("add demo")
 	public String add() {
 		return "add success";
 	}
 
-	@PostMapping("/find")
+	@GetMapping("/find")
 	@RequiresPermissions("select")
+	@ApiOperation("select demo")
 	public String find() {
 		return "find success";
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	@RequiresPermissions("update")
+	@ApiOperation("update demo")
 	public String update() {
 		return "update success";
 	}
 
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	@RequiresPermissions("delete")
+	@ApiOperation("delete demo")
 	public String delete() {
 		return "delete success";
 
